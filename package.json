@@ -1,0 +1,26 @@
+{
+  "name": "g00365942",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^15.4.0",
+    "promise-mysql": "^5.0.1"
+  },
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eoin-Lernihan/Data-Centric-Project.git"
+  },
+  "author": "Eoin Lernihan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eoin-Lernihan/Data-Centric-Project/issues"
+  },
+  "homepage": "https://github.com/Eoin-Lernihan/Data-Centric-Project#readme"
+}
