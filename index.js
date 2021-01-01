@@ -1,26 +1,48 @@
 var express = require('express') ()
-var mysql = require('mysql');
-
-var pool  = mysql.createPool({
-    connectionLimit : 3,
-    host            : 'localhost',
-    user            : 'root',
-    password        : 'pa55word',
-    database        : 'geography'
-  });
-
+const { render } = require('ejs')
+var mySQLCaller = require('./mySQLCaller')
  
 
 var app = express
+app.set('view engine' , 'ejs')
 
 app.get('/', (req, res) => {
-    pool.query('SELECT * from city', function (error, results, fields) {
-        if (error) throw error;
-        console.log('The solution is: ', results[0].cty_code);
-        res.send(results[0].cty_code)
-      });
+  
+ mySQLCaller.getAllSqldata()
+ .then((results) => {
+   
+  res.render('showCity', {cities:results})
+ })
+ 
+ .catch((error) => {
+  console.log(error)
+  res.send("There seems to be an error, We are working to fix it. Please come back later")
+ })
 })
 
+
+app.get('/country', (req, res) => {
+  mySQLCaller.getCountryData()
+  .then((results) => {
+    res.render('showCountry', {countries:results})
+   })  
+   .catch((error) => {
+    console.log(error)
+    res.send("There seems to be an error, We are working to fix it. Please come back later")
+   })
+})
+
+app.get('/city', (req, res) => {
+  mySQLCaller.getCityData()
+  .then((results) => {
+    res.render('showCity', {cities:results})
+   })
+   
+   .catch((error) => {
+    console.log(error)
+    res.send("There seems to be an error, We are working to fix it. Please come back later")
+   })
+})
 app.listen(3004, () => {
     console.log("Listening")
 })

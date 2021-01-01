@@ -1,0 +1,24 @@
+<table>
+    <Button variant="danger" onClick={this.country}>country</Button>
+    <tr>
+        <th>cty_code</th>
+        <th>co_code</th>
+        <th>cty_name</th>
+        <th>population</th>
+        <th>isCoastal</th>
+        <th>areaKM</th>
+    </tr>
+    <% cities.forEach((city) => { %>
+    <tr>
+
+    <td><%=city.cty_code%></td>
+    <td><%=city.co_code%></td>
+    <td><%=city.cty_name%></td>
+    <td><%=city.population%></td>
+    <td><%=city.isCoastal%></td>
+    <td><%=city.areaKM%></td>
+
+
+</tr>
+<%})%>
+</table>
