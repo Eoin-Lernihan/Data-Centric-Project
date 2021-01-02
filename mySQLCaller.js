@@ -30,7 +30,7 @@ var getAllSqldata = function() {
       })
   })
 }
-var getCountryData = function () {
+var getCountriesData = function () {
   return new Promise((resolve, reject) => {
     pool.query('SELECT * from country')
       .then((results) => {
@@ -41,7 +41,23 @@ var getCountryData = function () {
       })
   })
 }
-var getCityData = function () {
+
+var getCountryData = function (co_code) {
+  return new Promise((resolve, reject) => {
+    var MyQuery = {
+    sql:'SELECT * from country where co_code = ?',
+    values: [co_code]
+    }
+    pool.query(MyQuery)
+      .then((results) => {
+        resolve(results)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
+var getCitiesData = function () {
   return new Promise((resolve, reject) => {
     pool.query('SELECT * from city')
       .then((results) => {
@@ -53,6 +69,20 @@ var getCityData = function () {
   })
 }
 
+var getCityData = function (cty_code) {
+  return new Promise((resolve, reject) => {
+    var MyQuery = {
+    sql:'SELECT * from city where cty_code = ?',
+    values: [cty_code]
+    }
+    pool.query(MyQuery)
+      .then((results) => {
+        resolve(results)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
 
-
-module.exports = { getAllSqldata, getCityData, getCountryData }
+module.exports = { getAllSqldata, getCityData, getCountriesData, getCitiesData, getCountryData }

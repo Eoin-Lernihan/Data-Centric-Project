@@ -1,19 +1,17 @@
 <table>
-    <p><a href="<%= home %>" class="btn btn-primary" role="button">Home</a></p>
+    
     <tr>
         <th>Country Code</th>
         <th>Country Name</th>
         <th>Country details</th>
         
-    </tr>
+    </tr>   
     <% countries.forEach((country) => { %>
     <tr>
-
+    <td><%=country%></td>
     <td><%=country.co_code%></td>
     <td><%=country.co_name%></td>
     <td><%=country.co_details%></td>
-   <td><a href="<%= countryDetail+country.co_code %>" class="btn btn-primary" role="button">that right</a></td>
-
 </tr>
 <%})%>
 </table>
