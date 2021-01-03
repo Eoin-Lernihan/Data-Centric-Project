@@ -3,18 +3,18 @@
     <tr>
         <th>Country Code</th>
         <th>Country Name</th>
-        <th>Country details</th>
         
+
     </tr>
     <% countries.forEach((country) => { %>
     <tr>
-
     <td><%=country.co_code%></td>
     <td><%=country.co_name%></td>
-    <td><%=country.co_details%></td>
-   <td><a href="<%= countryDetail+country.co_code %>" class="btn btn-primary" role="button">that right</a></td>
-
-</tr>
+   <td><a href="<%= countryDetail+country.co_code %>"><input type="submit" value="Details"  class="btn btn-primary" ></input></a></td>
+   <td><a href="<%= update+country.co_code %>" ><input type="submit" class="btn btn-primary" value="Update"></input></a></td>
+   <td><a href="<%= delte+country.co_code %>"><input type="submit" value="Delete" class="btn btn-primary"></input></a></td>
+</tr>  
 <%})%>
+<tr><a href="<%= add %>" class="btn btn-primary" role="button">Add country</a></tr>
 </table>
 

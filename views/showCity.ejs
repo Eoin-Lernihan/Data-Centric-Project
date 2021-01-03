@@ -14,7 +14,7 @@
     <tr>
 
     <td><%=city.cty_code%></td>
-    <td><%=city.co_code%></td>
+    <td><a href="<%= countryLink+city.co_code %>" class="btn btn-primary" role="button"><%=city.co_code%></a></td>
     <td><%=city.cty_name%></td>
     <td><%=city.population%></td>
     <td><%=city.isCoastal%></td>

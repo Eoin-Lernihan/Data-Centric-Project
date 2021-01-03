@@ -2,6 +2,7 @@ const { reject } = require('assert');
 const { resolve } = require('path');
 const ejs = require('ejs');
 var mysql = require('promise-mysql');
+const { log } = require('console');
 
 var pool
 
@@ -85,4 +86,56 @@ var getCityData = function (cty_code) {
   })
 }
 
-module.exports = { getAllSqldata, getCityData, getCountriesData, getCitiesData, getCountryData }
+var addCountryData = function(body){
+  return new Promise((resolve, reject) => {
+    console.log(body)
+    var MyQuery = {
+      sql:'INSERT INTO country VALUES (?, ?, ?) '  ,
+      values: [body.code, body.name, body.details]
+      }
+      pool.query(MyQuery)
+        .then((results) => {
+          resolve(results)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+}
+
+var updateCountryData = function(req){
+  return new Promise((resolve, reject) => {
+    console.log(req.body)
+    console.log(req.params.country)
+    var MyQuery = {
+      sql:'UPDATE country SET co_name = ?, co_details = ? where co_code = ? '  ,
+      values: [req.body.name, req.body.details, req.params.country]
+      }
+      pool.query(MyQuery)
+        .then((results) => {
+          resolve(results)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+}
+
+var deleteCountryData = function(country){
+  return new Promise((resolve, reject) => {
+    console.log(country)
+    var MyQuery = {
+      sql:'delete from country where co_code = ? '  ,
+      values: [country]
+      }
+      pool.query(MyQuery)
+        .then((results) => {
+          resolve(results)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+}
+
+module.exports = { getAllSqldata, getCityData, getCountriesData, getCitiesData, getCountryData, addCountryData, updateCountryData, deleteCountryData}
