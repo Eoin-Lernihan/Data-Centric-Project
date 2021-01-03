@@ -1,25 +1,20 @@
-<table>
-    
-    <p><a href="<%= home %>" class="btn btn-primary" role="button">Home</a></p>
+<!--Creates page for all Cities-->
+<table cellpadding="5" cellspacing="2" border="3px solid purple">
+    <p><a href="<%= home %>" class="btn btn-primary" role="button"><input type="button" value="Home"></a></p>
     <tr>
-        <th href="\country" >Hello</th>
         <th>cty_code</th>
         <th>co_code</th>
         <th>cty_name</th>
-        <th>population</th>
-        <th>isCoastal</th>
-        <th>areaKM</th>
+       
     </tr>
     <% cities.forEach((city) => { %>
     <tr>
 
     <td><%=city.cty_code%></td>
-    <td><a href="<%= countryLink+city.co_code %>" class="btn btn-primary" role="button"><%=city.co_code%></a></td>
+    <!--Allows you to enter the country details-->
+    <td><a href="<%= countryLink+city.co_code %>" class="btn btn-primary" role="button"><input type="button" value="<%=city.co_code%>"></a></td>
     <td><%=city.cty_name%></td>
-    <td><%=city.population%></td>
-    <td><%=city.isCoastal%></td>
-    <td><%=city.areaKM%></td>
-    <td><a href="<%= cityDetails+city.cty_code %>" class="btn btn-primary" role="button">that right</a></td>
+    <td><a href="<%= cityDetails+city.cty_code %>" class="btn btn-primary" role="button"><input type="button" value="More details"></a></td>
 
 </tr>
 <%})%>

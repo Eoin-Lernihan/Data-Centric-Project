@@ -5,7 +5,7 @@ var mysql = require('promise-mysql');
 const { log } = require('console');
 
 var pool
-
+//makes sql caller
 mysql.createPool({
   connectionLimit: 3,
   host: 'localhost',
@@ -19,7 +19,7 @@ mysql.createPool({
     console.log("error2")
 });
 
-
+//Gets all data form city
 var getAllSqldata = function() {
   return new Promise((resolve, reject) => {
     pool.query('SELECT * from city')
@@ -31,6 +31,7 @@ var getAllSqldata = function() {
       })
   })
 }
+//Gets all data form country
 var getCountriesData = function () {
   return new Promise((resolve, reject) => {
     pool.query('SELECT * from country')
@@ -42,7 +43,7 @@ var getCountriesData = function () {
       })
   })
 }
-
+//Gets data form a country depending on the co_code
 var getCountryData = function (co_code) {
   return new Promise((resolve, reject) => {
     var MyQuery = {
@@ -58,6 +59,7 @@ var getCountryData = function (co_code) {
       })
   })
 }
+//Gets all data form city
 var getCitiesData = function () {
   return new Promise((resolve, reject) => {
     pool.query('SELECT * from city')
@@ -69,7 +71,7 @@ var getCitiesData = function () {
       })
   })
 }
-
+//Gets data form a city depending on cty code
 var getCityData = function (cty_code) {
   return new Promise((resolve, reject) => {
     var MyQuery = {
@@ -85,7 +87,7 @@ var getCityData = function (cty_code) {
       })
   })
 }
-
+//Add data into country
 var addCountryData = function(body){
   return new Promise((resolve, reject) => {
     console.log(body)
@@ -102,7 +104,7 @@ var addCountryData = function(body){
         })
     })
 }
-
+//Updates data from country using co_code
 var updateCountryData = function(req){
   return new Promise((resolve, reject) => {
     console.log(req.body)
@@ -120,7 +122,7 @@ var updateCountryData = function(req){
         })
     })
 }
-
+//Deletes data from country using co_code
 var deleteCountryData = function(country){
   return new Promise((resolve, reject) => {
     console.log(country)

@@ -1,0 +1,15 @@
+<!--Shows all heads of states-->
+<table border="3px solid purple" cellpadding="5" cellspacing="2">
+<p><a href="<%= home %>" class="btn btn-primary" role="button"><input type="button" value="Home"></a></p>
+    <tr>
+        <th>Country Code</th>        
+        <th>Head of the State</th>
+    </tr>   
+    <% stateHead.forEach((headState) => { %>
+    <tr>
+    <td><%=headState._id%></td>
+    <td><%=headState.headOfState%></td> 
+</tr>
+<%})%>
+</table>
+

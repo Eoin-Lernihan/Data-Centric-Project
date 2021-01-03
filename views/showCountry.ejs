@@ -1,10 +1,10 @@
-<table>
-    <p><a href="<%= home %>" class="btn btn-primary" role="button">Home</a></p>
+<!--Show all countries-->
+<table class="CardTable" cellpadding="5" cellspacing="2" border="3px solid purple"  >
+    <!--Home button-->
+    <p><a href="<%= home %>" class="btn btn-primary" role="button"><input type="button" value="Home"></a></p> 
     <tr>
         <th>Country Code</th>
         <th>Country Name</th>
-        
-
     </tr>
     <% countries.forEach((country) => { %>
     <tr>
@@ -15,6 +15,7 @@
    <td><a href="<%= delte+country.co_code %>"><input type="submit" value="Delete" class="btn btn-primary"></input></a></td>
 </tr>  
 <%})%>
-<tr><a href="<%= add %>" class="btn btn-primary" role="button">Add country</a></tr>
+<!--All for additional courties to be added-->
+<tr><a href="<%= add %>" class="btn btn-primary" role="button"><input type="submit" class="btn btn-primary" value="Add Country"></a></tr>
 </table>
 
