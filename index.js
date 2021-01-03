@@ -2,11 +2,13 @@ var express = require('express')()
 const { render } = require('ejs')
 var mySQLCaller = require('./mySQLCaller')
 var bodyParser = require('body-parser')
+const MongoClient = require('mongodb').MongoClient;
 
 var app = express
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }))
-
+const strConnection = 'mongodb+srv://admin:admin@cluster0.ixqop.mongodb.net';
+ 
 
 app.get('/', (req, res) => {
   mySQLCaller.getAllSqldata()
@@ -142,6 +144,21 @@ app.get('/deleteCountry/:country', (req, res) => {
   })
 })
 
+
+app.route('/HeadOfStates').get(function (req, res) {
+  MongoClient.connect(strConnection, function (err, client) {
+    if (err) throw err;
+
+    var db = client.db('Geography');
+
+    db.collection('headOfState').find({}).toArray(function (err, docs) { 
+      if (err) return res.status(500).send({error: err})
+      
+      res.send(docs);
+      client.close();
+    });
+    });
+  });
 
 app.listen(3004, () => {
   console.log("Listening")
